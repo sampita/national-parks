@@ -10,8 +10,9 @@ const parksHTMLGenerator = (parkname, parkstate) => {
         <h3>${parkname}</h3>
         <p>${parkstate}</p>
     `
+    return newArticleEl
 }
-console.log(parksHTMLGenerator)
+// console.log(parksHTMLGenerator("awesome park", "FL"))
 
 // Function to populate DOM with parks HTML
 const addParksToDom = (newhtml) => {
@@ -22,22 +23,19 @@ const addParksToDom = (newhtml) => {
 fetch("http://localhost:8088/parks")
 .then(parks => parks.json())
 .then(parsedParks => {
+    // For Each loop to generate HTML for each park and then populate to DOM    
     parsedParks.forEach(park => {
+        let parkname = "name not listed"
+        let parkstate = "state unknown"
         console.table(parsedParks)
         if (park.name) {
-            let parkname = park.name
-        }
-        else {
-            parkname = "name not listed"
+            parkname = park.name
         }
         if (park.state) {
-            let parkstate = park.state
+            parkstate = park.state
         }
-        else {
-            parkstate = "state unknown"
-        }
-    // For Each loop to generate HTML for each park and then populate to DOM    
-            const parksHTML = parksHTMLGenerator(park)
+
+            const parksHTML = parksHTMLGenerator(parkname, parkstate)
             addParksToDom(parksHTML)
         })
     })
