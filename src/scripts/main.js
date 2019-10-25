@@ -1,4 +1,4 @@
-console.log("Friday, friday, gotta get down on friday!")
+// console.log("Friday, friday, gotta get down on friday!")
 
 // A reference to the parks container element
 const parksContainer = document.querySelector("#parks-container")
@@ -27,15 +27,15 @@ fetch("http://localhost:8088/parks")
     parsedParks.forEach(park => {
         let parkname = "name not listed"
         let parkstate = "state unknown"
-        console.table(parsedParks)
+        // console.table(parsedParks)
         if (park.name) {
             parkname = park.name
         }
         if (park.state) {
             parkstate = park.state
-        }
-
+        
             const parksHTML = parksHTMLGenerator(parkname, parkstate)
             addParksToDom(parksHTML)
-        })
+        }}
+        )
     })
