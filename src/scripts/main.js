@@ -1,0 +1,1 @@
+console.log("Friday, friday, gotta get down on friday!")
